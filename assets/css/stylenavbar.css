@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* body{
+    
+}
+nav{
+    
+} */
+.activeCSS{
+    color: white !important;
+}
+.navText{
+    color: lightgray !important ;
+}
+
+/* header{
+   
+}
+main{
+   
+}
+footer{
+    
+} */
+
+
+
+/* Media de navbar */
+@media (min-width: 992px) {
+    .borderLiNav{
+        border: none !important;
+    }
+}
