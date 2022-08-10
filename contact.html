@@ -16,7 +16,7 @@
         <a href=""></a>
         <!-- sticky -->
     </nav>
-    <header>
+    <header class="d-flex justify-content-center">
         <div>
             <a href="index.html">
                 <img src="" alt=""> 
@@ -24,23 +24,57 @@
             </a>
         </div>
     </header>
-    <main>
-        <h1>Contact</h1>
-        <div>
-            <!-- formulario -->
-        </div>
-        <div>
-            <!-- mapa -->
-        </div>
+    <main class="d-flex justify-content-center">
+        <div class="container d-flex justify-content-center m-5 flex-column">
+            <form class="formcntc d-flex justify-content-center flex-column">
+                <fieldset class="d-flex flex-column">
+                    <legend>Nombre y Apellido:</legend>
+                    <input type="text">
+                </fieldset>
+                <fieldset class="d-flex flex-column">
+                    <legend>Teléfono:</legend>
+                    <input type="text">
+                </fieldset>
+                <h3>Indique su tipo de Mascota:</h3>
+                <fieldset class="d-flex justify-content-evenly">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="perro">
+                        <label class="form-check-label" for="perro">Perro 🐶</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="gato" checked>
+                        <label class="form-check-label" for="gato">Gato 🐱</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="pez">
+                        <label class="form-check-label" for="pez"> Pez 🐟</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="ave">
+                        <label class="form-check-label" for="ave">Ave 🐦</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="reptil" checked>
+                        <label class="form-check-label" for="reptil">Reptil 🦎</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="ave">
+                        <label class="form-check-label" for="ave">Roedor 🐀</label>
+                    </div>
+                </fieldset>
+                <fieldset class="m-1">
+                    <legend>Comentarios:</legend>
+                    <textarea cols="170" rows="10"></textarea>
+                    <input class="submit" type="submit" value="Submit">
+                </fieldset>
+            </form>
+                <div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.6982072067995!2d-58.43259848417477!3d-34.61179216543365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca429815227f%3A0x5d302e497c2cda87!2sR%C3%ADo%20de%20Janeiro%20300%2C%20C1405CCB%20CABA!5e0!3m2!1ses-419!2sar!4v1660084835553!5m2!1ses-419!2sar" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                
+                </div>
+            </div>
     </main>
     <footer>
-        <div>
-            <!-- redes sociales -->
-            <!-- direccion -->
-            <!-- copyrigth -->
-            <!-- cohort 32 -->
-            <!-- flecha para arriba -->
-        </div>
+        
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
