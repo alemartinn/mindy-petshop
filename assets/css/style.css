@@ -18,3 +18,9 @@ main{
 footer{
     background-color: salmon;
 }
+
+:root{  --main-color: #F9EBC8;
+    --second-color: #FEFBE7; 
+    --third-color: #DAE5D0; 
+    --fourth-color: #A0BCC2; 
+}
