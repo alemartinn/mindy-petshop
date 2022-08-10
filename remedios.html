@@ -4,18 +4,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestros Remedios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <title>Nuestros Juguetes</title>
 </head>
 <body>
-    <nav>
-        <a href=""></a>
-        <a href=""></a>
-        <a href=""></a>
-        <a href=""></a>
-        <a href=""></a>
-        <!-- sticky -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand me-5">🦴 Mindy Petshop</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav m-2">
+                <li class="nav-item">
+                    <a class="nav-link mx-3 text-white" aria-current="page" href="./index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3 text-white" href="#">Remedios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3 text-white" href="./juguetes.html">Juguetes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3 text-white" href="./carrito.html">Carrito</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3 text-white" href="./contact.html">Contacto</a>
+                </li>
+            </ul>
+          </div>
+        </div>
     </nav>
     <header>
+        <!-- <div id="carouselExampleFade" class="container carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./assets/img/mascotas_magic.png" class="w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./assets/img/petshop.jpg" class="w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./assets/img/petshop2.jpg" class="w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="./assets/img/petshop3.jpg" class="w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div> -->
         <div>
             <a href="index.html">
                 <img src="" alt=""> 
@@ -23,25 +67,25 @@
             </a>
         </div>
     </header>
-    <main>
-        <div>
-            <h1>TITULO</h1>
+    <main class="container">
+        <div style="border-bottom: 1px solid rgba(0,0,0,0.08); margin: 4vh 0;">
+            <h1>REMEDIOS</h1>
             <h3>SUBTITULO</h3>
         </div>
         <div>
             <!-- filtros tipo checkbox -->
         </div>
-        <div>
-            <!-- mostrar productos de farmacia en cards -->
+        <div class="container d-flex flex-wrap gap-4 justify-content-center pb-3 pt-3" id="productsContainer">
+            <!-- mostrar productos de juguetes en cards -->
             <!-- destacar loss productos con menos de 3 unidades arriba-->
             <!-- agregar boton de añadir y disminuir unidad -->
             <!-- agregar boton de añadir al carrito -->
             <!-- agregar boton de realizar compra -->
         </div>
-        
     </main>
     <footer>
         <div>
+            footer
             <!-- redes sociales -->
             <!-- direccion -->
             <!-- copyrigth -->
@@ -49,6 +93,6 @@
             <!-- flecha para arriba -->
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="./js/productos.js"></script>
 </body>
 </html>
