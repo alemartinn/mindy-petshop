@@ -4,34 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/stylenavbar.css">
     <title>Carrito</title>
 </head>
 <body>
-    <nav>
-        <a href=""></a>
-        <a href=""></a>
-        <a href=""></a>
-        <a href=""></a>
-        <a href=""></a>
-        <!-- sticky -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container d-lg-grid" style=" grid-template-columns: 200px 1fr 200px">
+            <a class="navbar-brand me-5">🦴 Mindy Petshop</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav m-2">
+              <li class="nav-item">
+                <a class="nav-link mx-3 border-bottom border-light borderLiNav activeCSS" aria-current="page" href="#">Inicio</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link mx-3 border-bottom border-light borderLiNav navText" href="./remedios.html">Remedios</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link mx-3 border-bottom border-light borderLiNav navText" href="./juguetes.html">Juguetes</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link mx-3 border-bottom border-light borderLiNav navText" href="./carrito.html">Carrito</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link mx-3 borderLiNav navText" href="./contact.html">Contacto</a>
+              </li>
+            </ul>
+          </div>
+        </div>
     </nav>
     <header>
-        <div>
-            <a href="index.html">
-                <img src="" alt=""> 
-                <!-- COMPLETE EL ANCHO DE LA PAGINA -->
-            </a>
-        </div>
+
     </header>
     <main>
-        <div>
+        <div class="container">
             <h1>TITULO</h1>
             <h3>SUBTITULO</h3>
         </div>
-        <div>
-            <!-- contenedor carrito con sus productos -->
-            <!-- agregar boton de añadir y disminuir unidad por producto-->
-            <!-- agregar boton de añadir al carrito -->
+        <div class="container">
+            <div id="contenedorCarrito" class="d-flex flex-wrap border border-danger justify-content-evenly">
+                <div id="misProductos" class="d-flex flex-column justify-content-center"></div>
+                <!-- contenedor carrito con sus productos -->
+                <!-- agregar boton de añadir y disminuir unidad por producto-->
+                <!-- agregar boton de añadir al carrito -->
+                <div id="miCarrito" class="col-4">
+                    <h2>CARRITO DE COMPRAS</h2>
+                    <button>TOTAL UNIDADES</button>
+                    <p id="parrafoPrecioTotal">PRECIO: $ <span id="PrecioTotalEnCarrito">0</span></p>
+                    <button>FINALIZAR COMPRA</button>
+                    <button>ELIMINAR TODO</button>
+                </div>
+            </div>
         </div>
     </main>
     <footer>
@@ -44,6 +70,6 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <script src="./js/productos.js"></script>
+    <script src="./js/carrito.js"></script>
 </body>
 </html>
