@@ -29,6 +29,38 @@
 //         container.appendChild(card)
 //     })
 // }
+/* RECIBO TODAS LAS PROPIEDADES DE PRODUCTOS PARA GUARDAR MI PRODUCTO EN LOCAL STORAGE */
+const agregarAlCarrito = (productoId, productoNombre, productoDescripcion, productoImagen, productoPrecio, productoStock, productoTipo, productoV) => {
+
+    let producto = {
+        _id: productoId,
+        nombre: productoNombre,
+        descripcion: productoDescripcion,
+        imagen: productoImagen,
+        precio: productoPrecio,
+        stock: productoStock,
+        tipo: productoTipo,
+        __v: productoV
+    }
+
+    let productosDeCarritoArr;
+    
+    console.log(producto)
+
+    if(localStorage.getItem('productosDeCarrito')){
+        productosDeCarritoArr = JSON.parse(localStorage.getItem('productosDeCarrito'))
+    }else{
+        productosDeCarritoArr = [];
+    }
+
+    console.log(productosDeCarritoArr)
+
+    /* LOCAL STORAGE ESPERA UNA CADENA, USO STRINGIFY */
+    let productosDeCarrito = JSON.stringify(productosDeCarritoArr.push(producto));
+    console.log(productosDeCarrito)
+    miStorage = window.localStorage;
+    localStorage.setItem('productosDeCarrito',productosDeCarrito);
+}
 
 const aumentarCantidad = (idProducto, stockTotal) => {
     let valorElegidoText = document.getElementById(idProducto);
@@ -71,8 +103,8 @@ const printCards = (productos, container) => {
             <li class="list-group-item d-flex justify-content-between">Stock: ${producto.stock} ${producto.stock < 3 ? ultimasUnidades : ""}</li>
         </ul>
         <div class="card-body d-flex justify-content-around">
-            <a href="./carrito.html" class="btn btn-outline-dark card-link">Agregar a carrito</a>
-            <a href="./carrito.html" class="btn btn-outline-dark card-link">Comprar</a>
+            <button onclick="agregarAlCarrito('${producto._id}','${producto.nombre}','${producto.descripcion}','${producto.imagen}','${producto.precio}','${producto.stock}','${producto.tipo}','${producto.__v}')" class="btn btn-outline-dark card-link"> Agregar a carrito </button>
+            <a href="./carrito.html" class="btn btn-outline-dark card-link"> Comprar </a>
         </div>
         `
         container.appendChild(card)
