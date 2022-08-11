@@ -15,6 +15,15 @@ nav{
 .navText{
     color: lightgray !important ;
 }
+.logo{
+    max-height: 5vh;
+}
+.carro{
+    height: 2vh;
+}
+li>a:hover{
+    background-color: darkslategray;
+}
 
 /* header{
    
