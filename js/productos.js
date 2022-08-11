@@ -29,9 +29,13 @@
 //         container.appendChild(card)
 //     })
 // }
-/* RECIBO TODAS LAS PROPIEDADES DE PRODUCTOS PARA GUARDAR MI PRODUCTO EN LOCAL STORAGE */
-const agregarAlCarrito = (productoId, productoNombre, productoDescripcion, productoImagen, productoPrecio, productoStock, productoTipo, productoV) => {
 
+let productosDeCarritoArr=[];
+let nuevoCarrito = [];
+
+/* RECIBO TODAS LAS PROPIEDADES DE PRODUCTOS PARA GUARDAR MI PRODUCTO EN LOCAL STORAGE */
+const agregarAlCarrito = async (productoId, productoNombre, productoDescripcion, productoImagen, productoPrecio, productoStock, productoTipo, productoV) => {
+    
     let producto = {
         _id: productoId,
         nombre: productoNombre,
@@ -41,25 +45,44 @@ const agregarAlCarrito = (productoId, productoNombre, productoDescripcion, produ
         stock: productoStock,
         tipo: productoTipo,
         __v: productoV
-    }
+    };
 
-    let productosDeCarritoArr;
-    
-    console.log(producto)
 
-    if(localStorage.getItem('productosDeCarrito')){
-        productosDeCarritoArr = JSON.parse(localStorage.getItem('productosDeCarrito'))
+
+    /* SI NO HAY NADA EN EL LOCAL STORAGE ENTONCES LO CREAMOS */
+    if(!window.localStorage.getItem('productosDeCarrito')){
+        console.log('no habia nada en el local storage')
+        productosDeCarritoArr = [producto]
+        console.log(productosDeCarritoArr)
+
     }else{
-        productosDeCarritoArr = [];
-    }
+        /* SI HAY ALGO ENTONCES VERIFICAMOS QUE NO SE REPITA*/
 
-    console.log(productosDeCarritoArr)
+
+        console.log('habia algo en el local storage')
+        console.log(productosDeCarritoArr)
+        // productosDeCarritoArr.forEach(prod => console.log(typeof(prod._id)))
+
+        let indiceProducto = productosDeCarritoArr.find((productoCar => productoId === productoCar._id))
+
+        console.log(indiceProducto)
+
+        if (!indiceProducto){
+            console.log('pero no estaba el producto que agregaste')
+            nuevoCarrito = JSON.parse(localStorage.getItem('productosDeCarrito'))
+            productosDeCarritoArr = [...nuevoCarrito, producto]
+            console.log(productosDeCarritoArr)
+        }
+        else{
+            console.log('pero ese producto ya estaba en el storage')
+        }
+
+    }
+    
 
     /* LOCAL STORAGE ESPERA UNA CADENA, USO STRINGIFY */
-    let productosDeCarrito = JSON.stringify(productosDeCarritoArr.push(producto));
-    console.log(productosDeCarrito)
-    miStorage = window.localStorage;
-    localStorage.setItem('productosDeCarrito',productosDeCarrito);
+    let productosDeCarrito = JSON.stringify(productosDeCarritoArr);
+    window.localStorage.setItem('productosDeCarrito',productosDeCarrito);
 }
 
 const aumentarCantidad = (idProducto, stockTotal) => {
