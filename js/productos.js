@@ -131,7 +131,7 @@ const getFilteredProducts = (datosProductos, tipoProducto) => {
 
 const printCards = (productos, container, tipoProducto) => {
 
-    const ultimasUnidades = "<span class='text-dark fw-bold' >Ultimas Unidades!</span>"
+    const ultimasUnidades = "<span class='text-dark fw-bold' style='color: rgb(255, 107, 62) !important' >Ultimas Unidades!</span>"
     container.innerHTML = "";
 
     productos.forEach(producto => {
@@ -190,7 +190,7 @@ const getData = async () => {
         showData(dataApi);
     }
     catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
