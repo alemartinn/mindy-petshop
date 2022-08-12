@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./assets/css/stylenavbar.css">
     <title>Carrito</title>
 </head>
-<body>
+<body class="d-flex flex-column" style="min-height: 100vh ;">
     <nav class=" navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container d-lg-grid" style=" grid-template-columns: 200px 1fr 200px">
             <a href="./index.html" class="navbar-brand me-5"><img class="logo" src="./assets/img/mindylogo2.png"></a>
@@ -44,20 +44,28 @@
     <header>
 
     </header>
-    <main>
-        <div class="container">
-            <h1>TITULO</h1>
-            <h3>SUBTITULO</h3>
+    <main style="background-color: #F9EBC8;flex-grow: 1;" >
+        <div class="container mb-4" >
+            <h1 class="text-center py-4">TUS PRODUCTOS</h1>
+            <h3 class="text-center py-3">SUBTITULO</h3>
         </div>
-        <div class="container">
-            <div id="contenedorCarrito" class="d-flex flex-wrap border border-danger justify-content-evenly">
-                <div id="misProductos" class="d-flex flex-column justify-content-center"></div>
-                <div id="miCarrito" class="col-4">
-                    <h2>CARRITO DE COMPRAS</h2>
-                    <button>TOTAL UNIDADES</button>
-                    <p id="parrafoPrecioTotal">PRECIO: $ <span id="PrecioTotalEnCarrito">0</span></p>
-                    <button>FINALIZAR COMPRA</button>
-                    <button>ELIMINAR TODO</button>
+        <div class="container mt-2">
+            <div id="contenedorCarrito" class="d-flex flex-wrap justify-content-evenly shadow-lg py-5" style="background-color: white;min-height: 40vh;">
+                <div id="misProductos" class="col-lg-6 d-flex flex-column justify-content-center "></div>
+                <!-- contenedor carrito con sus productos -->
+                <!-- agregar boton de añadir y disminuir unidad por producto-->
+                <!-- agregar boton de añadir al carrito -->
+                <div id="miCarrito" class="col-lg-4">
+                    <h2 class="border-bottom text-center mt-3 mb-4">CARRITO DE COMPRAS</h2>
+                    <!-- <button>TOTAL UNIDADES</button> -->
+                    <p class="fw-bold border-bottom text-center fs-4" id="parrafoPrecioTotal">Total: $<span id="PrecioTotalEnCarrito"> 0</span></p>
+                    <div class="d-flex justify-content-center">
+                        <button class="btn-group px-3 btn btn-outline-dark m-2 m-lg-1" onclick="vaciarCarrito()">Vaciar Carrito</button>
+                        <button class="btn-group px-3 btn btn-primary m-2 m-lg-1" onclick="finalizarCompra()">Finalizar Compra</button>
+                    </div>
+                    <div id="misAlertas">
+
+                    </div>
                 </div>
             </div>
         </div>
