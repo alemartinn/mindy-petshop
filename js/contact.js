@@ -15,3 +15,11 @@ document.getElementById('botonAlerta').addEventListener('click',(e) => {
     `
     },3000)
 })
+
+let form = document.forms[0];
+console.log(form)
+form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    form.reset();
+    }
+);

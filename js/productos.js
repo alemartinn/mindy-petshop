@@ -40,10 +40,10 @@ const filtrarProductos = (productos, container) => {
 const generadorFiltroSelect = () => {
     let contenedorFiltros = document.getElementById("contenedorFiltros")
     contenedorFiltros.innerHTML = `
-    <div class="d-flex justify-content-end formSelect container">
+    <div class="d-flex justify-content-end container formSelect">
         <label for="lang " class="form-text col-md-1 col-12">Ordenar de: </label>
-        <form action="#" class=" col-md-3 col-12 ">
-        <select name="Precios" class="form-control form-control-sm" id="selectInput" >
+        <form action="#" class=" col-md-4 col-12 ">
+        <select name="Precios" class="form-control form-control-sm "  id="selectInput" >
             <option value="0"> - </option>
             <option value="1">Precio: Menor a Mayor</option>
             <option value="2">Precio Mayor a Menor</option>
@@ -59,8 +59,32 @@ const generadorFiltroSelect = () => {
 let productosDeCarritoArr = [];
 let nuevoCarrito = [];
 
+const mostrarProductoAgregado = (tipoProducto) => {
+
+    let carrito = JSON.parse(localStorage.getItem('productosDeCarrito'))
+    let nuevoCarrito = undefined;
+    if(tipoProducto === "Juguete"){
+        nuevoCarrito = carrito.filter(producto => producto.tipo === tipoProducto)
+        nuevoCarrito.forEach(producto => {
+            const contenedor = document.getElementById(producto._id+"i")
+            contenedor.style.display = "inline-block"
+        })
+    }
+    else if(tipoProducto === "Medicamento"){
+        nuevoCarrito = carrito.filter(producto => producto.tipo === tipoProducto)
+        nuevoCarrito.forEach(producto => {
+            const contenedor = document.getElementById(producto._id+"i")
+            contenedor.style.display = "inline-block"
+        })
+    }
+}
+
 /* RECIBO TODAS LAS PROPIEDADES DE PRODUCTOS PARA GUARDAR MI PRODUCTO EN LOCAL STORAGE */
 const agregarAlCarrito = (productoId, productoNombre, productoDescripcion, productoImagen, productoPrecio, productoStock, productoTipo, productoV) => {
+
+    /* ESTO AGREGA EL ICONO DE CARRITO AL PRODUCTO QUE SE ENCUENTRE EN EL CARRITO */
+    const contenedor = document.getElementById(productoId+"i")
+    contenedor.style.display = "inline-block"
 
     let producto = {
         _id: productoId,
@@ -121,7 +145,7 @@ const printCards = (productos, container) => {
             <h5 class="card-title">${producto.nombre}</h5>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Precio: $${producto.precio}</li>
+            <li class="list-group-item d-flex justify-content-between">Precio: $${producto.precio} <span id="${producto._id}i" style="display: none;"><img style="height: 22px;" src="./assets/img/carrito.png"></span></li>
             <li class="list-group-item d-flex justify-content-between">Stock: ${producto.stock} ${producto.stock < 3 ? ultimasUnidades : ""}</li>
         </ul>
         <div class="card-body d-flex justify-content-around">
@@ -143,6 +167,7 @@ const showData = (dataApi) => {
         generadorFiltroSelect()
         let productos = getFilteredProducts(dataApi, "Juguete")
         printCards(productos, container);
+        mostrarProductoAgregado("Juguete");
         filtrarProductos(productos, container);
 
     } else if (tituloPagina.textContent == 'REMEDIOS') {
@@ -150,6 +175,7 @@ const showData = (dataApi) => {
         let productos = getFilteredProducts(dataApi, "Medicamento")
 
         printCards(productos, container);
+        mostrarProductoAgregado("Medicamento");
         filtrarProductos(productos, container);
     }
 }
