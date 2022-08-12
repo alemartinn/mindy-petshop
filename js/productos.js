@@ -1,37 +1,37 @@
 
-const filtrarProductos = (productos, container) => {
+const filtrarProductos = (productos, container, tipoProducto) => {
     let valorSelect = document.getElementById("selectInput")
     valorSelect.addEventListener("change", () => {
 
         if (valorSelect.value === "1") {
 
             productos.sort((a, b) => a.precio - b.precio)
-            printCards(productos, container)
+            printCards(productos, container, tipoProducto)
 
         } else if (valorSelect.value === "2") {
 
             productos.sort((a, b) => b.precio - a.precio);
-            printCards(productos, container)
+            printCards(productos, container, tipoProducto)
 
         } else if (valorSelect.value === "3") {
 
             productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
-            printCards(productos, container)
+            printCards(productos, container, tipoProducto)
 
         } else if (valorSelect.value === "4") {
 
             productos.sort((b, a) => a.nombre.localeCompare(b.nombre));
-            printCards(productos, container)
+            printCards(productos, container, tipoProducto)
 
         } else if (valorSelect.value === "5") {
 
             productos.sort((a, b) => a.stock - b.stock);
-            printCards(productos, container)
+            printCards(productos, container, tipoProducto)
 
         } else if (valorSelect.value === "6") {
 
             productos.sort((a, b) => b.stock - a.stock);
-            printCards(productos, container)
+            printCards(productos, container, tipoProducto)
 
         }
     })
@@ -129,7 +129,7 @@ const getFilteredProducts = (datosProductos, tipoProducto) => {
     return datosProductos.filter(producto => producto.tipo == tipoProducto)
 }
 
-const printCards = (productos, container) => {
+const printCards = (productos, container, tipoProducto) => {
 
     const ultimasUnidades = "<span class='text-dark fw-bold' >Ultimas Unidades!</span>"
     container.innerHTML = "";
@@ -155,6 +155,8 @@ const printCards = (productos, container) => {
         `
         container.appendChild(card)
     })
+    
+    mostrarProductoAgregado(tipoProducto);
 }
 
 const showData = (dataApi) => {
@@ -166,17 +168,15 @@ const showData = (dataApi) => {
 
         generadorFiltroSelect()
         let productos = getFilteredProducts(dataApi, "Juguete")
-        printCards(productos, container);
-        mostrarProductoAgregado("Juguete");
-        filtrarProductos(productos, container);
+        printCards(productos, container, "Juguete");
+        filtrarProductos(productos, container, "Medicamento");
 
     } else if (tituloPagina.textContent == 'REMEDIOS') {
         generadorFiltroSelect()
         let productos = getFilteredProducts(dataApi, "Medicamento")
 
-        printCards(productos, container);
-        mostrarProductoAgregado("Medicamento");
-        filtrarProductos(productos, container);
+        printCards(productos, container, "Medicamento");
+        filtrarProductos(productos, container, "Medicamento");
     }
 }
 
