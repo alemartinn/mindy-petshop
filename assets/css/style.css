@@ -3,24 +3,18 @@
     padding: 0;
     box-sizing: border-box;
 }
-body{
-    background-color: aqua;
-}
-nav{
-    background-color: orange;
-}
-header{
-    background-color: yellowgreen;
-}
-main{
-    background-color: whitesmoke;
-}
-footer{
-    background-color: salmon;
-}
 
 :root{  --main-color: #F9EBC8;
     --second-color: #FEFBE7; 
     --third-color: #DAE5D0; 
     --fourth-color: #A0BCC2; 
+}
+
+
+.color{
+    background-color: var(--main-color);
+}
+
+main h1{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

@@ -3,30 +3,22 @@
     padding: 0;
     box-sizing: border-box;
 }
-/* body{
-    
-}
-nav{
-    
-} */
+
 .activeCSS{
     color: white !important;
 }
 .navText{
     color: lightgray !important ;
 }
-
-/* header{
-   
+.logo{
+    max-height: 5vh;
 }
-main{
-   
+.carro{
+    height: 2vh;
 }
-footer{
-    
-} */
-
-
+li>a:hover{
+    background-color: darkslategray;
+}
 
 /* Media de navbar */
 @media (min-width: 992px) {
