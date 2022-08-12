@@ -40,10 +40,10 @@ const filtrarProductos = (productos, container) => {
 const generadorFiltroSelect = () => {
     let contenedorFiltros = document.getElementById("contenedorFiltros")
     contenedorFiltros.innerHTML = `
-    <div class="d-flex justify-content-end  container">
+    <div class="d-flex justify-content-end formSelect container">
         <label for="lang " class="form-text col-md-1 col-12">Ordenar de: </label>
-        <form action="#" class=" col-md-1 col-12 ">
-        <select name="Precios" class="form-control form-control-sm "  id="selectInput" >
+        <form action="#" class=" col-md-3 col-12 ">
+        <select name="Precios" class="form-control form-control-sm" id="selectInput" >
             <option value="0"> - </option>
             <option value="1">Precio: Menor a Mayor</option>
             <option value="2">Precio Mayor a Menor</option>
@@ -116,8 +116,8 @@ const printCards = (productos, container) => {
         card.style.width = '18rem'
         card.style.minWidth = '300px'
         card.innerHTML = `
-        <img src="${producto.imagen}" style="height: 50%; border-bottom: 1px solid rgba(0,0,0,0.08);" class="card-img-top" alt="producto">
-        <div class="card-body" style="height: 50%;">
+        <img src="${producto.imagen}" style="height: 30vh; border-bottom: 1px solid rgba(0,0,0,0.08);" class="card-img-top" alt="producto">
+        <div class="card-body" style="height: 10vh;">
             <h5 class="card-title">${producto.nombre}</h5>
         </div>
         <ul class="list-group list-group-flush">
@@ -125,7 +125,7 @@ const printCards = (productos, container) => {
             <li class="list-group-item d-flex justify-content-between">Stock: ${producto.stock} ${producto.stock < 3 ? ultimasUnidades : ""}</li>
         </ul>
         <div class="card-body d-flex justify-content-around">
-            <button onclick="agregarAlCarrito('${producto._id}','${producto.nombre}','${producto.descripcion}','${producto.imagen}','${producto.precio}','${producto.stock}','${producto.tipo}','${producto.__v}')" class="btn btn-outline-dark card-link"> Agregar a carrito </button>
+            <button onclick="agregarAlCarrito('${producto._id}','${producto.nombre}','${producto.descripcion}','${producto.imagen}','${producto.precio}','${producto.stock}','${producto.tipo}','${producto.__v}')" class="btn btn-outline-dark card-link"> Agregar al Carrito </button>
             <a href="./carrito.html" class="btn btn-outline-dark card-link"> Comprar </a>
         </div>
         `
