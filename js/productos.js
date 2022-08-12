@@ -70,9 +70,10 @@ const agregarAlCarrito = (productoId, productoNombre, productoDescripcion, produ
         precio: productoPrecio,
         stock: productoStock,
         tipo: productoTipo,
-        __v: productoV
+        __v: productoV,
+        unidades: 1
     };
-
+    
     /* SI NO HAY NADA EN EL LOCAL STORAGE ENTONCES LO CREAMOS */
     if (!window.localStorage.getItem('productosDeCarrito')) {
         productosDeCarritoArr = [producto]
@@ -85,8 +86,6 @@ const agregarAlCarrito = (productoId, productoNombre, productoDescripcion, produ
 
         /* BUSCA SI EL PRODUCTO QUE FUE CLICKEADO SE ENCUENTRA EN EL ARRAY RECUPERADO DE LOCAL STORAGE */
         let indiceProducto = productosDeCarritoArr.find((productoCar => productoId === productoCar._id))
-
-        console.log(indiceProducto)
 
         /* SI NO ENCONTRO EL ELEMENTO ENTONCES LO AGREGA AL ARRAY */
         if (!indiceProducto) {
