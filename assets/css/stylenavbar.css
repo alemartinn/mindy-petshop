@@ -3,12 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
-/* body{
-    
-}
-nav{
-    
-} */
+
 .activeCSS{
     color: white !important;
 }
@@ -24,18 +19,6 @@ nav{
 li>a:hover{
     background-color: darkslategray;
 }
-
-/* header{
-   
-}
-main{
-   
-}
-footer{
-    
-} */
-
-
 
 /* Media de navbar */
 @media (min-width: 992px) {

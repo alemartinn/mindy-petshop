@@ -40,17 +40,20 @@ const filtrarProductos = (productos, container) => {
 const generadorFiltroSelect = () => {
     let contenedorFiltros = document.getElementById("contenedorFiltros")
     contenedorFiltros.innerHTML = `
-    <form action="#">
-    <label for="lang">Ordenar de: </label>
-    <select name="Precios" id="selectInput">
-      <option value="0"> - </option>
-      <option value="1">Precio: Menor a Mayor</option>
-      <option value="2">Precio Mayor a Menor</option>
-      <option value="3">Nombre: A - Z</option>
-      <option value="4">Nombre: Z - A</option>
-      <option value="5">Stock: Menor a Mayor</option>
-      <option value="6">Stock: Mayor a Menor</option>
-    </form>
+    <div class="d-flex justify-content-end  container">
+        <label for="lang " class="form-text col-md-1 col-12">Ordenar de: </label>
+        <form action="#" class=" col-md-1 col-12 ">
+        <select name="Precios" class="form-control form-control-sm "  id="selectInput" >
+            <option value="0"> - </option>
+            <option value="1">Precio: Menor a Mayor</option>
+            <option value="2">Precio Mayor a Menor</option>
+            <option value="3">Nombre: A - Z</option>
+            <option value="4">Nombre: Z - A</option>
+            <option value="5">Stock: Menor a Mayor</option>
+            <option value="6">Stock: Mayor a Menor</option>
+        </select>
+        </form>
+    </div>
     `
 }
 let productosDeCarritoArr = [];
