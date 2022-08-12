@@ -102,8 +102,6 @@ const agregarAlCarrito = (productoId, productoNombre, productoDescripcion, produ
     window.localStorage.setItem('productosDeCarrito', productosDeCarrito);
 }
 
-
-
 const getFilteredProducts = (datosProductos, tipoProducto) => {
     return datosProductos.filter(producto => producto.tipo == tipoProducto)
 }
