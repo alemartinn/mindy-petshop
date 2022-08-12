@@ -82,79 +82,7 @@ const printCardsCarrito2 = (productos, container) => {
 const mostrarDataCarrito = () =>{
     let productosDeCarrito = JSON.parse(localStorage.getItem('productosDeCarrito'));
     let containerCarrito = document.getElementById('misProductos')
-    // printCardsCarrito(productosDeCarrito, containerCarrito);
     printCardsCarrito2(productosDeCarrito, containerCarrito);
 }
 
 mostrarDataCarrito();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const printCardsCarrito = (productos, container) => {
-
-//     const ultimasUnidades = "<span class='text-dark fw-bold' >Ultimas Unidades!</span>"
-
-//     productos.forEach(producto => {
-//         let card = document.createElement('div')
-//         card.className = 'card shadow'
-//         card.style.width = '18rem'
-//         card.style.minWidth = '300px'
-//         card.innerHTML = `
-//         <img src="${producto.imagen}" style="height: 50%; border-bottom: 1px solid rgba(0,0,0,0.08);" class="card-img-top" alt="producto">
-//         <div class="card-body" style="height: 50%;">
-//             <h5 class="card-title">${producto.nombre}</h5>
-//         </div>
-//         <ul class="list-group list-group-flush">
-//             <li class="list-group-item">Precio: $${producto.precio}</li>
-//             <li class="list-group-item d-flex justify-content-between">Stock: ${producto.stock} ${producto.stock < 3 ? ultimasUnidades : ""}</li>
-//         </ul>
-//         <div class="card-body d-flex justify-content-around">
-//             <div class="d-flex justify-content-evenly align-items-center">
-//                 <button onClick=disminuirCantidad("${producto._id}") class="boton botonRestar" > - </button>
-//                 <span id=${producto._id} class="text-center" style="width: 30px;"> 0 </span>
-//                 <button onClick=aumentarCantidad("${producto._id}","${producto.stock}")> + </button>
-//             </div>
-//             <a href="./carrito.html" class="btn btn-outline-dark card-link">Comprar</a>
-//         </div>
-//         `
-//         container.appendChild(card)
-//     })
-// }
-
-    // if (precioTotalCarrito === 0){
-    //     /* SI NO HAY PRODUCTOS, VAMOS A SUMAR SOLAMENTE*/
-    //     console.log('hay que aumentar solamente')
-
-    //     precioTotalCarrito += parseInt(unidadesProducto) * parseInt(precioProducto)
-    //     console.log(precioTotalCarrito)
-
-    // }else{
-        
-    //     /* SI HAY PRODUCTOS, VAMOS A SUMAR O RESTAR AL PRECIO TOTAL*/
-    //     contenedorPrecioTotal  = parseInt(precioTotalCarrito)
-    //     let unidadesText = document.getElementById(idProducto);
-    //     let unidades = parseInt(unidadesText.textContent);  
-
-    //     if(tipoCuenta === "aumentar"){
-    //         console.log('hay que aumentar')
-    //         precioTotalCarrito += parseInt(unidadesProducto) * parseInt(precioProducto)
-    //         console.log(precioTotalCarrito)
-    //     }
-    //     else if(tipoCuenta === "disminuir"){
-    //         console.log('hay que restar')
-    //         precioTotalCarrito = precioTotalCarrito - parseInt(unidadesProducto) * parseInt(precioProducto)
-    //         console.log(precioTotalCarrito)
-    //     }
-    // }
