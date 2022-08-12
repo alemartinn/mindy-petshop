@@ -54,7 +54,7 @@ const vaciarCarrito = () =>{
 }
 
 // Eliminar producto
-const quitarDelCarrito = (idProducto,precioProducto) => {
+const quitarDelCarrito = (idProducto) => {
   let container = document.getElementById('misProductos')
   let carrito = recuperarCarritoLS("productosDeCarrito")
   let nuevoCarrito = carrito.filter( productos => productos._id !== idProducto);
@@ -151,7 +151,7 @@ const printCardsCarrito = (productos, container) => {
                                 <button onClick= mostrarProductosEnCarrito();aumentarCantidad("${producto._id}"); class="btn btn-outline-dark"> + </button>
                             </div>
                             <div class=" d-flex mx-4">
-                                <button type="button" class="btn btn-outline-dark" onClick= quitarDelCarrito("${producto._id}","${producto.precio}") > X </button>
+                                <button type="button" class="btn btn-outline-dark" onClick= quitarDelCarrito("${producto._id}") > X </button>
                             </div>
                         </div>
                     </div>
