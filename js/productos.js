@@ -174,7 +174,6 @@ const mostrarProductosCorrespondientes = (dataApi) => {
     }
 }
 
-
 /* Funcion que obtiene los datos de la API mindy-petshop */
 const obtenerDatosApi = async () => {
     let respuesta = await fetch("https://apipetshop.herokuapp.com/api/articulos");
@@ -182,7 +181,6 @@ const obtenerDatosApi = async () => {
     let dataApi =  respuestaJson.response;
     return dataApi
 }
-
 
 const mostrarProductos = async () => {
     try {
