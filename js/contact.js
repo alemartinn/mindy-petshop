@@ -7,7 +7,6 @@ document.getElementById('botonAlerta').addEventListener('click',(e) => {
     </div>
     `
     setTimeout(() => {
-    let borrarAlerta = document.getElementById('contenedorAlerta')
     contenedorAlerta.innerHTML=`
     <div class="alert alert-success m-2" style="min-height: 7vh; display: none;" role="alert" id="miAlertaContact">
         Su mensaje ha sido enviado correctamente, gracias por contactarnos!
