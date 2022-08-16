@@ -1,4 +1,3 @@
-let precioTotalDeCarrito = 0;
 
 const recuperarCarritoLS = (clave) =>{
   return JSON.parse(localStorage.getItem(clave));
@@ -8,7 +7,6 @@ const actualizarCarritoLS = (clave, datos) => {
  localStorage.setItem(clave, JSON.stringify(datos));
 }
 
-// Finalizar compra
 const finalizarCompra = () =>{
     mostrarCompraRealizada();
     localStorage.clear("productosDeCarrito");
@@ -16,18 +14,18 @@ const finalizarCompra = () =>{
     containerCarrito.innerHTML = "";
     actualizarValorPrecioTotal(0);
 }
-// Mostrar ventana de la compra
+
 const mostrarCompraRealizada = () =>{
-    const contenedor = document.getElementById("misAlertas")
-    contenedor.innerHTML = ""
-    let productoDeCarritoLS = localStorage.getItem("productosDeCarrito")
+    const contenedor = document.getElementById("misAlertas");
+    contenedor.innerHTML = "";
+    let productoDeCarritoLS = localStorage.getItem("productosDeCarrito");
     if(productoDeCarritoLS){
         let avisoFinalizarCompra = document.createElement("div");
         avisoFinalizarCompra.innerHTML = `
             <div class="alert alert-dark text-center fs-5 m-4 m-sm-3" role="alert">
                 Tu compra fue realizada con exito!
             </div>
-            `
+            `;
         contenedor.appendChild(avisoFinalizarCompra);
     }else{
         let avisoFinalizarCompra = document.createElement("div");
@@ -35,55 +33,52 @@ const mostrarCompraRealizada = () =>{
             <div class="alert alert-danger text-center fs-5 m-4 m-sm-3" role="alert">
                 Agrega productos para realizar tu compra!
             </div>
-            `
+            `;
         contenedor.appendChild(avisoFinalizarCompra);
     }
     
 }
 
-// Vaciar carrito
 const vaciarCarrito = () =>{
-    localStorage.clear("productosDeCarrito")
+    localStorage.clear("productosDeCarrito");
     let containerCarrito = document.getElementById("misProductos");
     containerCarrito.innerHTML = `
         <div class="alert alert-dark text-center fs-5 m-4 m-sm-0" role="alert">
             No hay ningun producto en el carrito!
         </div>
-        `
-    actualizarValorPrecioTotal(0)
+        `;
+    actualizarValorPrecioTotal(0);
 }
 
-// Eliminar producto
 const quitarDelCarrito = (idProducto) => {
-  let container = document.getElementById('misProductos')
-  let carrito = recuperarCarritoLS("productosDeCarrito")
+  let container = document.getElementById('misProductos');
+  let carrito = recuperarCarritoLS("productosDeCarrito");
   let nuevoCarrito = carrito.filter( productos => productos._id !== idProducto);
-  actualizarCarritoLS("productosDeCarrito", nuevoCarrito)
-  mostrarProductosEnCarrito()
-  printCardsCarrito(nuevoCarrito, container)
+  actualizarCarritoLS("productosDeCarrito", nuevoCarrito);
+  mostrarProductosEnCarrito();
+  pintarCartasDeCarrito(nuevoCarrito, container);
 };
 
 const disminuirCantidad = (idProducto) => {
   let carrito = recuperarCarritoLS("productosDeCarrito");
-  let nuevoCarrito = carrito.map(producto => producto.unidades > 1 && producto._id === idProducto ? {...producto, unidades: producto.unidades-1} : producto)
-  actualizarCarritoLS("productosDeCarrito", nuevoCarrito)
+  let nuevoCarrito = carrito.map(producto => producto.unidades > 1 && producto._id === idProducto ? {...producto, unidades: producto.unidades-1} : producto);
+  actualizarCarritoLS("productosDeCarrito", nuevoCarrito);
   actualizarUnidadCard(idProducto);
-  mostrarProductosEnCarrito()
+  mostrarProductosEnCarrito();
 };
 
 const aumentarCantidad = (idProducto) => {
   let carrito = recuperarCarritoLS("productosDeCarrito");
-  let nuevoCarrito = carrito.map(producto => producto.unidades < producto.stock && producto._id === idProducto ? {...producto, unidades: producto.unidades+1} : producto)
+  let nuevoCarrito = carrito.map(producto => producto.unidades < producto.stock && producto._id === idProducto ? {...producto, unidades: producto.unidades+1} : producto);
   actualizarCarritoLS("productosDeCarrito", nuevoCarrito);
   actualizarUnidadCard(idProducto);
-  mostrarProductosEnCarrito()
+  mostrarProductosEnCarrito();
 };
 
 const actualizarUnidadCard = (idProducto) => {
   let carrito = recuperarCarritoLS("productosDeCarrito");
-  let produc = carrito.find(producto => producto._id === idProducto)
-  console.log(produc)
-  let unidadProducto = produc.unidades
+  let produc = carrito.find(producto => producto._id === idProducto);
+  let unidadProducto = produc.unidades;
   let valorBoton = document.getElementById(idProducto);
   valorBoton.textContent = unidadProducto;
 
@@ -102,14 +97,13 @@ const mostrarProductosEnCarrito = () => {
   let valorTotal = 0;
 
   carrito.map(producto => {
-    valorTotal += parseInt(producto.precio) * parseInt(producto.unidades)
+    valorTotal += parseInt(producto.precio) * parseInt(producto.unidades);
   })
 
-  actualizarValorPrecioTotal(valorTotal)
+  actualizarValorPrecioTotal(valorTotal);
 };
 
-// Pintar las card del carrito 
-const printCardsCarrito = (productos, container) => {
+const pintarCartasDeCarrito = (productos, container) => {
 
   container.innerHTML= "";
 
@@ -121,6 +115,7 @@ const printCardsCarrito = (productos, container) => {
         </div>
         `;
     container.appendChild(aviso);
+
   }else if (productos && productos.length === 0) {
     let aviso = document.createElement("div");
     aviso.innerHTML = `
@@ -129,6 +124,7 @@ const printCardsCarrito = (productos, container) => {
         </div>
         `;
     container.appendChild(aviso);
+
   } else if (productos){
     productos.forEach((producto) => {
       let card = document.createElement("div");
@@ -166,7 +162,7 @@ const printCardsCarrito = (productos, container) => {
 const mostrarDataCarrito = () => {
   let productosDeCarrito = JSON.parse(localStorage.getItem("productosDeCarrito"));
   let containerCarrito = document.getElementById("misProductos");
-  printCardsCarrito(productosDeCarrito, containerCarrito);
+  pintarCartasDeCarrito(productosDeCarrito, containerCarrito);
 };
 
 mostrarDataCarrito();
