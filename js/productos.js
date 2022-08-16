@@ -34,30 +34,11 @@ const filtrarProductos = (productos, container, tipoProducto) => {
     })
 }
 
-const generadorFiltroSelect = () => {
-    let contenedorFiltros = document.getElementById("contenedorFiltros");
-    contenedorFiltros.innerHTML = `
-    <div class="d-flex justify-content-end container formSelect">
-        <label for="lang " class="form-text col-md-1 col-12">Ordenar de: </label>
-        <form action="#" class=" col-md-4 col-12 ">
-        <select name="Precios" class="form-control form-control-sm "  id="selectInput" >
-            <option value="0"> - </option>
-            <option value="1">Precio: Menor a Mayor</option>
-            <option value="2">Precio Mayor a Menor</option>
-            <option value="3">Nombre: A - Z</option>
-            <option value="4">Nombre: Z - A</option>
-            <option value="5">Stock: Menor a Mayor</option>
-            <option value="6">Stock: Mayor a Menor</option>
-        </select>
-        </form>
-    </div>
-    `;
-}
-
 const mostrarProductoAgregado = (tipoProducto) => {
 
     let carrito = JSON.parse(localStorage.getItem('productosDeCarrito'));
     let nuevoCarrito = [];
+
     if(tipoProducto === "Juguete"){
         nuevoCarrito = carrito.filter(producto => producto.tipo === tipoProducto);
         nuevoCarrito.forEach(producto => {
@@ -65,6 +46,7 @@ const mostrarProductoAgregado = (tipoProducto) => {
             contenedor.style.display = "inline-block";
         })
     }
+
     else if(tipoProducto === "Medicamento"){
         nuevoCarrito = carrito.filter(producto => producto.tipo === tipoProducto);
         nuevoCarrito.forEach(producto => {
@@ -119,12 +101,8 @@ const agregarAlCarrito = (productoId, productoNombre, productoDescripcion, produ
     window.localStorage.setItem('productosDeCarrito', JSON.stringify(carrito));
 }
 
-const obtenerProductos = (datosProductos, tipoProducto) => {
-    return datosProductos.filter(producto => producto.tipo == tipoProducto);
-}
-
 const pintarCartasDeProductos = (productos, container, tipoProducto) => {
-
+    
     const ultimasUnidades = "<span class='text-dark fw-bold' style='color: rgb(255, 107, 62) !important' >Ultimas Unidades!</span>";
     container.innerHTML = "";
 
@@ -153,6 +131,30 @@ const pintarCartasDeProductos = (productos, container, tipoProducto) => {
     mostrarProductoAgregado(tipoProducto);
 }
 
+const obtenerProductosCorrespondientes = (datosProductos, tipoProducto) => {
+    return datosProductos.filter(producto => producto.tipo == tipoProducto);
+}
+
+const generadorFiltroSelect = () => {
+    let contenedorFiltros = document.getElementById("contenedorFiltros");
+    contenedorFiltros.innerHTML = `
+    <div class="d-flex justify-content-end container formSelect">
+        <label for="lang " class="form-text col-md-1 col-12">Ordenar de: </label>
+        <form action="#" class=" col-md-4 col-12 ">
+        <select name="Precios" class="form-control form-control-sm "  id="selectInput" >
+            <option value="0"> - </option>
+            <option value="1">Precio: Menor a Mayor</option>
+            <option value="2">Precio Mayor a Menor</option>
+            <option value="3">Nombre: A - Z</option>
+            <option value="4">Nombre: Z - A</option>
+            <option value="5">Stock: Menor a Mayor</option>
+            <option value="6">Stock: Mayor a Menor</option>
+        </select>
+        </form>
+    </div>
+    `;
+}
+
 const mostrarProductosCorrespondientes = (dataApi) => {
 
     let tituloPagina = document.querySelector('h1');
@@ -161,14 +163,14 @@ const mostrarProductosCorrespondientes = (dataApi) => {
     if (tituloPagina.textContent == 'JUGUETES') {
 
         generadorFiltroSelect();
-        let productos = obtenerProductos(dataApi, "Juguete");
+        let productos = obtenerProductosCorrespondientes(dataApi, "Juguete");
         pintarCartasDeProductos(productos, container, "Juguete");
         filtrarProductos(productos, container, "Juguete");
 
     } else if (tituloPagina.textContent == 'REMEDIOS') {
 
         generadorFiltroSelect();
-        let productos = obtenerProductos(dataApi, "Medicamento");
+        let productos = obtenerProductosCorrespondientes(dataApi, "Medicamento");
         pintarCartasDeProductos(productos, container, "Medicamento");
         filtrarProductos(productos, container, "Medicamento");
     }

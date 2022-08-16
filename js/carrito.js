@@ -11,7 +11,12 @@ const finalizarCompra = () =>{
     mostrarCompraRealizada();
     localStorage.clear("productosDeCarrito");
     let containerCarrito = document.getElementById("misProductos");
-    containerCarrito.innerHTML = "";
+    containerCarrito.innerHTML = `
+    <div class="alert alert-dark text-center fs-5 m-4 m-sm-0" role="alert">
+        No hay ningun producto en el carrito!
+    </div>
+    `;
+
     actualizarValorPrecioTotal(0);
 }
 
@@ -20,21 +25,25 @@ const mostrarCompraRealizada = () =>{
     contenedor.innerHTML = "";
     let productoDeCarritoLS = localStorage.getItem("productosDeCarrito");
     if(productoDeCarritoLS){
-        let avisoFinalizarCompra = document.createElement("div");
-        avisoFinalizarCompra.innerHTML = `
+      contenedor.innerHTML = `
             <div class="alert alert-dark text-center fs-5 m-4 m-sm-3" role="alert">
                 Tu compra fue realizada con exito!
             </div>
             `;
-        contenedor.appendChild(avisoFinalizarCompra);
     }else{
-        let avisoFinalizarCompra = document.createElement("div");
-        avisoFinalizarCompra.innerHTML = `
-            <div class="alert alert-danger text-center fs-5 m-4 m-sm-3" role="alert">
+        contenedor.innerHTML = `
+            <div class="alert alert-danger text-center fs-5 m-4 m-sm-3" style="display: flex" role="alert">
+                Agrega productos para realizar tu compra!
+            </div>
+        `;
+
+        setTimeout(() => {
+          contenedor.innerHTML = `
+            <div class="alert alert-danger text-center fs-5 m-4 m-sm-3" style="display:none;" role="alert">
                 Agrega productos para realizar tu compra!
             </div>
             `;
-        contenedor.appendChild(avisoFinalizarCompra);
+        },3000)
     }
     
 }
@@ -96,9 +105,11 @@ const mostrarProductosEnCarrito = () => {
   let carrito = recuperarCarritoLS("productosDeCarrito");
   let valorTotal = 0;
 
-  carrito.map(producto => {
-    valorTotal += parseInt(producto.precio) * parseInt(producto.unidades);
-  })
+  if (carrito){
+    carrito.map(producto => {
+      valorTotal += parseInt(producto.precio) * parseInt(producto.unidades);
+    })
+  }
 
   actualizarValorPrecioTotal(valorTotal);
 };
