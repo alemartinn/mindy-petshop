@@ -1,4 +1,5 @@
-document.getElementById('botonAlerta').addEventListener('click',(e) => {
+
+const mostrarAvisoFormulario = (e) => {
     e.preventDefault()
     let contenedorAlerta = document.getElementById('contenedorAlerta')
     contenedorAlerta.innerHTML=`
@@ -13,12 +14,9 @@ document.getElementById('botonAlerta').addEventListener('click',(e) => {
     </div>
     `
     },3000)
-})
+    
+    document.getElementById("myForm").reset()
+}
 
-let form = document.forms[0];
-console.log(form)
-form.addEventListener('submit', (e)=>{
-    e.preventDefault();
-    form.reset();
-    }
-);
+// let botonEnviarForm = document.getElementById('botonAlerta');
+// botonEnviarForm.addEventListener('click', (e) => mostrarAvisoFormulario(e))
