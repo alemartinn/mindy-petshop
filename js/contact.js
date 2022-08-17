@@ -1,25 +1,23 @@
-document.getElementById('botonAlerta').addEventListener('click',(e) => {
-    e.preventDefault()
-    let contenedorAlerta = document.getElementById('contenedorAlerta')
+
+const mostrarAvisoFormulario = (e) => {
+    e.preventDefault();
+
+    let contenedorAlerta = document.getElementById('contenedorAlerta');
     contenedorAlerta.innerHTML=`
     <div class="alert alert-success m-2" style="min-height: 7vh;" role="alert" id="miAlertaContact">
         <b>¡Su mensaje ha sido enviado correctamente, gracias por contactarnos!</b>
     </div>
-    `
+    `;
     setTimeout(() => {
-    let borrarAlerta = document.getElementById('contenedorAlerta')
     contenedorAlerta.innerHTML=`
     <div class="alert alert-success m-2" style="min-height: 7vh; display: none;" role="alert" id="miAlertaContact">
         Su mensaje ha sido enviado correctamente, gracias por contactarnos!
     </div>
-    `
-    },3000)
-})
+    `;
+    },3000);
+    
+    document.getElementById("myForm").reset();
+}
 
-let form = document.forms[0];
-console.log(form)
-form.addEventListener('submit', (e)=>{
-    e.preventDefault();
-    form.reset();
-    }
-);
+let botonEnviarForm = document.getElementById('botonAlerta');
+botonEnviarForm.addEventListener('click', (e) => mostrarAvisoFormulario(e));
