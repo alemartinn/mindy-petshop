@@ -18,5 +18,5 @@ const mostrarAvisoFormulario = (e) => {
     document.getElementById("myForm").reset()
 }
 
-// let botonEnviarForm = document.getElementById('botonAlerta');
-// botonEnviarForm.addEventListener('click', (e) => mostrarAvisoFormulario(e))
+let botonEnviarForm = document.getElementById('botonAlerta');
+botonEnviarForm.addEventListener('click', (e) => mostrarAvisoFormulario(e))
